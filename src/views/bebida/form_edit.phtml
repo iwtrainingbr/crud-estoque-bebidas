@@ -1,0 +1,32 @@
+<h1>Editar Bebida</h1>
+
+<section class="row mt-5">
+    <div class="col">
+        <!-- imagem do undraw.co -->
+        <img width="90%" src="img/add.svg">
+    </div>
+    <div class="col">
+        <article class="card card-body text-bg-dark">
+            <form action="" method="post" enctype="multipart/form-data">
+                <label for="titulo">Titulo</label>
+                <input value="<?php echo $bebidaParaEditar[0];?>" id="titulo" name="titulo" type="text" class="form-control mb-3">
+
+                <label for="preco">Preço</label>
+                <input value="<?=$bebidaParaEditar[2]?>" id="preco" name="preco" step="0.01" type="number" class="form-control mb-3">
+            
+                <label for="desc">Descrição</label>
+                <input value="<?=$bebidaParaEditar[1] ?>" id="desc" name="descricao" type="text" class="form-control mb-3">
+            
+                <label for="qtd">Quantidade</label>
+                <input value="<?=$bebidaParaEditar[3]?>" id="qtd" min="0" name="quantidade" type="text" class="form-control mb-3">
+            
+                <label for="foto">Foto</label>
+                <input id="foto" name="foto" type="file" class="form-control mb-3">
+                
+                <div class="d-grid">
+                    <button class="btn btn-outline-light btn-lg">PRONTO</button>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>

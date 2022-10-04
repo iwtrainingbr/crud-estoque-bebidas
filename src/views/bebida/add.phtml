@@ -1,0 +1,70 @@
+
+
+<?php
+    // if (!empty($_POST)) {
+    //     extract($_POST);
+
+    //     if ($preco < 0) {
+    //         WebNotification::add('Preço invalido', 'danger');
+    //         return;
+    //     }
+
+    //     $foto = 'img/'.$_FILES['foto']['name'];
+
+    //     move_uploaded_file(
+    //         $_FILES['foto']['tmp_name'], 
+    //         dirname(__DIR__, 2).'/public/'.$foto
+    //     );
+
+    //     $arquivo = openFile();
+
+    //     fwrite($arquivo, "{$titulo};{$descricao};{$preco};{$quantidade};{$foto}".PHP_EOL);
+
+    //     fclose($arquivo);
+
+    //     WebNotification::add('Bebida adicionada');
+    // }
+?>
+
+<h1>Página de Cadastro</h1>
+
+<section class="row mt-5">
+    <div class="col">
+        <!-- imagem do undraw.co -->
+        <img width="90%" src="img/add.svg">
+    </div>
+    <div class="col">
+        <article class="card card-body text-bg-dark">
+            <form action="" method="post" enctype="multipart/form-data">
+                <label for="categoria">Categoria</label>
+                <select name="categoria" id="categoria" class="form-select mb-3">
+                    <option selected> -- Selecione --</option>
+                    <?php
+                        foreach ($categories as $cat) {
+                            echo "<option value='{$cat->id}'>{$cat->name}</option>";
+                        }
+                    ?>  
+                </select>
+                
+                <label for="titulo">Titulo</label>
+                <input id="titulo" name="titulo" type="text" class="form-control mb-3">
+
+                <label for="preco">Preço</label>
+                <input id="preco" name="preco" step="0.01" type="number" class="form-control mb-3">
+            
+                <label for="desc">Descrição</label>
+                <input id="desc" name="descricao" type="text" class="form-control mb-3">
+            
+                <label for="qtd">Quantidade</label>
+                <input id="qtd" min="0" name="quantidade" type="text" class="form-control mb-3">
+            
+                <label for="foto">Foto</label>
+                <input id="foto" name="foto" type="file" class="form-control mb-3">
+                
+                <div class="d-grid">
+                    <button class="btn btn-outline-light btn-lg">PRONTO</button>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>
