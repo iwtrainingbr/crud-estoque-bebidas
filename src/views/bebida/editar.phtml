@@ -1,0 +1,32 @@
+<?php
+
+$id = $_GET['id'];
+
+$bebidas = loadFile();
+
+$bebidaParaEditar = explode(';', $bebidas[$id]);
+
+if (!empty($_POST)) {
+    $bebidaParaEditar[0] = $_POST['titulo'];
+    $bebidaParaEditar[1] = $_POST['descricao'];
+    $bebidaParaEditar[2] = $_POST['preco'];
+    $bebidaParaEditar[3] = $_POST['quantidade'];
+
+    $bebidas[$id] = implode(';', $bebidaParaEditar);
+
+    //excluindo o arquivo
+    removeFile();
+
+    $novoArquivo = openFile();
+    foreach ($bebidas as $cadaBebida) {
+        fwrite($novoArquivo, $cadaBebida);
+    }
+
+    fclose($novoArquivo);
+
+    WebNotification::add('Bebida atualizada');
+}
+
+render('bebida/form_edit', [
+    'bebidaParaEditar' => $bebidaParaEditar,
+]);
